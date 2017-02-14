@@ -1,0 +1,41 @@
+.test-bank-rate {
+  text-align: center;
+  margin: 30px auto 90px;
+  .test-entry-logo{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .rate-lab-logo{
+    margin: 30px auto;
+  }
+  .rate-logo{
+    margin-right: 10px;
+   img{
+     width: 45px;
+     height: 45px;
+     padding: 6px;
+   }
+  }
+  .rate-title {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    h5{
+      font-size: 18px;
+      margin: 2px 0;
+    }
+    h6{
+      font-size: 14px;
+      color: #ccc;
+      margin: 2px 0;
+    }
+  }
+  .rate-lab-submit {
+    .rate-submit-button {
+      text-transform: uppercase;
+      width: 100%;
+      padding: 18px 20px;
+    }
+  }
+
+}

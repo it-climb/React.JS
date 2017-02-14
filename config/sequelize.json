@@ -1,0 +1,95 @@
+{
+  "development": {
+    "host": "localhost",
+    "driver": "postgres",
+    "database": "none",
+    "username": "none",
+    "password": "none",
+    "port": 5432,
+    "protocol": "tcp",
+    "maxConcurrentQueries": 50,
+    "dialect": "postgres",
+    "omitNull": false,
+    "native": false,
+    "define": {
+      "underscored": false,
+      "freezeTableName": false,
+      "syncOnAssociation": true,
+      "charset": "utf8",
+      "collate": "utf8_bin",
+      "timestamps": false
+    },
+    "sync": {
+      "force": true
+    },
+    "syncOnAssociation": true,
+    "pool": {
+      "maxConnections": 10,
+      "minConnections": 1,
+      "maxIdleTime": 30
+    },
+    "language": "en"
+  },
+  "test": {
+    "host": "localhost",
+    "driver": "postgres",
+    "database": "dbname",
+    "username": "postgres",
+    "password": "1",
+    "port": 5432,
+    "protocol": "tcp",
+    "maxConcurrentQueries": 50,
+    "dialect": "postgres",
+    "omitNull": false,
+    "native": false,
+    "define": {
+      "underscored": false,
+      "freezeTableName": false,
+      "syncOnAssociation": true,
+      "charset": "utf8",
+      "collate": "utf8_bin",
+      "timestamps": false
+    },
+    "sync": {
+      "force": true
+    },
+    "syncOnAssociation": true,
+    "pool": {
+      "maxConnections": 10,
+      "minConnections": 1,
+      "maxIdleTime": 30
+    },
+    "language": "en"
+  },
+  "production": {
+    "host": "localhost",
+    "driver": "postgres",
+    "database": "dbname",
+    "username": "postgres",
+    "password": "1",
+    "port": 5432,
+    "protocol": "tcp",
+    "maxConcurrentQueries": 50,
+    "dialect": "postgres",
+    "omitNull": false,
+    "native": false,
+    "define": {
+      "underscored": false,
+      "freezeTableName": false,
+      "syncOnAssociation": true,
+      "charset": "utf8",
+      "collate": "utf8_bin",
+      "timestamps": false
+    },
+    "sync": {
+      "force": true
+    },
+    "syncOnAssociation": true,
+    "pool": {
+      "maxConnections": 10,
+      "minConnections": 1,
+      "maxIdleTime": 30
+    },
+    "language": "en"
+  }
+}

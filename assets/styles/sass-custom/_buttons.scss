@@ -1,0 +1,60 @@
+.btn-main{
+  background: $main-color;
+  color: white;
+  border: 1px solid $fifth-color;
+  border-radius: 0;
+  padding: 12px;
+  outline: none;
+  &:hover{
+    background: #4985E8;
+    color: white;
+  }
+  &:focus, &:active{
+    background: #4985E8;
+    color: white;
+    outline: none;
+    &:active{
+      outline: none;
+      background: #4985E8;
+      color: white;
+    }
+  }
+}
+.btn-simple{
+  background: white;
+  color: $secondary-color;
+  border: 1px solid $fifth-color;
+  border-radius: 0;
+  &:hover{
+    border: 1px solid black;
+    outline: none;
+    color: $secondary-color;
+  }
+  &:focus{
+    border: 1px solid black;
+    color: $secondary-color;
+    &:active{
+      outline: none;
+      color: $secondary-color;
+    }
+  }
+}
+.btn-big{
+  padding: 20px 45px;
+}
+.btn-large{
+  text-transform: uppercase;
+  font-weight: 700;
+  width: 45%;
+  margin: 2.5%;
+  height: 53px;
+}
+
+.btn-ok{
+  text-transform: uppercase;
+  font-weight: 700;
+  width: 35%;
+  margin: 20px auto;
+  height: 53px;
+  display: block;
+}

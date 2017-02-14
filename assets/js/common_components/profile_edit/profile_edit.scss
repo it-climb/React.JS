@@ -1,0 +1,25 @@
+.test-edit-profile {
+  .test-entry-logo{
+    margin-bottom: 15px;
+  }
+  .btn-upload-logo{
+    text-transform: capitalize;
+    margin: 0;
+    padding: 15px 35px;
+    font-size: 16px;
+    font-weight: bold;
+    input[type='file']{
+      display: none;
+    }
+  }
+  .first-name{
+    padding-right: 10px;
+  }
+  .second-name{
+    padding-left: 5px;
+  }
+  .socials .input-group-addon{
+    padding-right: 2px;
+    padding-left: 10px;
+  }
+}

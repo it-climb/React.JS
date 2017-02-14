@@ -1,0 +1,25 @@
+.mobile{
+  .fourth-headliner{
+    font: 32px $font-open;
+    line-height: 1.5em;
+    color: $main-color;
+    margin-top: 30px;
+  }
+  .desktop{
+    display: block;
+    margin: 30px auto;
+    text-align: center;
+    font-size: 135px;
+    color: $third-color;
+  }
+  .regular{
+    font: 300 19px/1.7em $font-open;
+    color: $fourth-color;
+    line-height: 1.5em;
+    margin-bottom: 15px;
+  }
+  .btn-main{
+    width: 100%;
+    margin-top: 25px;
+  }
+}

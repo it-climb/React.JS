@@ -1,0 +1,67 @@
+.modal-backdrop {
+  background-color: transparent;
+}
+.modal-report{
+  .first-headliner{
+    font: 100 48px $font-open;
+    margin: 20px 0 30px 40px;
+  }
+}
+.modal-content {
+  border-radius: 0;
+  padding: 20px;
+  position: relative;
+  border: none;
+  box-shadow: 0 1px 4px $third-color;
+  .thx-msg{
+    margin-left: 40px;
+  }
+  .recycling{
+    margin-bottom: 15px;
+  }
+  .regular {
+    &.ml40{
+      margin-left: 40px;
+    }
+    &.danger{
+      color: $seventh-color;
+    }
+  }
+  .form-group {
+    &.currency {
+      position: relative;
+      width: 25%;
+      margin: 0 auto;
+      &:before {
+        content: '+$';
+        position: absolute;
+        font-size: 18px;
+        top: 39px;
+        left: 15px;
+      }
+      .form-control {
+        padding-left: 45px;
+        border: none;
+        box-shadow: none;
+      }
+    }
+  }
+  .footnote{
+    color: $third-color;
+    i{
+      float: left;
+      margin-right: 10px;
+      display: block;
+    }
+    p{
+      overflow: hidden;
+      font-size: 16px;
+      line-height: 1.2em;
+    }
+  }
+
+}
+.modal-backdrop.in {
+  opacity: 0;
+}
+

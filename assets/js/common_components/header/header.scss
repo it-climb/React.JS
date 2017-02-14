@@ -1,0 +1,73 @@
+.test-page-header {
+  padding: 0 10px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2661c3+0,287f9f+60,2ba473+100 */
+  background: #2661c3; /* Old browsers */
+  background: -moz-linear-gradient(left,  #05c300 0%, #287f9f 60%, #a40307 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  #05c300 0%,#287f9f 60%, #a40307 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  #05c300 0%,#287f9f 60%, #a40307 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2661c3', endColorstr='#2ba473',GradientType=1 ); /* IE6-9 */
+
+  .login-link{
+    text-transform: uppercase;
+    margin-right: 30px;
+    color: white;
+  }
+  .navbar-default {
+    background-color: transparent;
+    border: 0;
+    .navbar-nav {
+      li {
+        a {
+          text-transform: uppercase;
+          margin-left: 30px;
+          color: white;
+          .material-icons{
+            margin-right: 5px;
+          }
+        }
+      }
+      .dropdown-menu{
+        a {
+          padding: 10px 20px;
+          margin-left: 0;
+          text-transform: uppercase;
+          font: 100 18px $font-open;
+          color: $fourth-color;
+          i{
+            color: $secondary-color;
+          }
+        }
+      }
+    }
+    .navbar-brand{
+      display: block;
+      padding: 15px;
+      color: white;
+      max-width: 195px;
+      cursor: pointer;
+      margin-left: 35px;
+    }
+
+  }
+  .navbar-nav {
+    a {
+      text-transform: uppercase;
+      .glyphicon{
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .credentials{
+    text-transform: capitalize;
+  }
+}
+
+@media print {
+  .test-page-header{
+    display: none;
+  }
+  .container {
+    width: 1170px;
+  }
+}

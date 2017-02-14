@@ -1,0 +1,14 @@
+.idea/
+node_modules/
+jspm_packages/
+dist/
+logs/
+test/
+!.gitkeep
+*.iml
+npm-debug.log
+*.log
+/src/models/test
+deploy.sh
+process.json
+*.rdb

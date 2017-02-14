@@ -1,0 +1,23 @@
+.test-entry-logo {
+  $logo_small: 80px;
+  $logo_big: 180px;
+
+  img {
+    border: 1px solid lightgray;
+  }
+  .test-entry-logo-small img{
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: block;
+  }
+  .test-entry-logo-big img{
+    width: $logo_big;
+    height: $logo_big;
+    padding: 22px;
+  }
+  .test-entry-logo-default {
+    opacity: 0.5;
+  }
+}
+

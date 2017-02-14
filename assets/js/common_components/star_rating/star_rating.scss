@@ -1,0 +1,53 @@
+.test-rating-entry {
+  margin: 25px auto;
+  text-align: left;
+  .rating-label {
+    text-transform: capitalize;
+    font-size: 14px;
+    color: lighten(grey, 10%);
+    margin-top: 12px;
+    display: inline-block;
+  }
+  .rate-stars.editable .glyph-star{
+    font-size: 32px;
+    margin: 0 4px;
+  }
+  .rate-stars {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    float: right;
+    font-size: 18px;
+    .glyph-star {
+      margin-right: 5px;
+      &:before {
+        content: "\f006";
+        font-family: $font-awesome;
+      }
+
+    }
+    .glyph-star.full {
+      &:before {
+        content: "\f005";
+      }
+    }
+  }
+  .rate-stars.editable {
+    .glyph-star {
+      cursor: pointer;
+    }
+    &:hover{
+      .glyph-star:before{
+        content: '\f005';
+      }
+    }
+    .glyph-star:hover ~ .glyph-star:before{
+      content: '\f006';
+    }
+  }
+}

@@ -1,0 +1,78 @@
+.test-dashboard {
+  padding-bottom: 50px;
+  .first-headliner {
+    font: 100 42px $font-open;
+    text-align: center;
+    margin: 30px auto;
+  }
+  .secondary-headliner {
+    font: 100 36px $font-open;
+    margin: 30px auto;
+    text-transform: capitalize;
+  }
+  .fourth-headliner {
+    font: 100 24px $font-open;
+    margin: 0 auto;
+    cursor: pointer;
+    .type {
+      display: inline-block;
+      height: 22px;
+      width: 22px;
+      margin-right: 10px;
+      border-radius: 4px;
+      &.blue {
+        background-color: $main-color;
+      }
+      &.green {
+        background-color: $secondary-color;
+      }
+      &.yellow {
+        background-color: $sixth-color;
+      }
+      &.red {
+        background-color: $seventh-color;
+      }
+    }
+  }
+  .regular-text {
+    font:300 14px/19px $font-open;
+    &.address, &.status, &.bid {
+      margin: 10px 0 0 33px;
+      .blue {
+        color: $main-color;
+      }
+      .green {
+        color: $secondary-color;
+      }
+      .yellow {
+        color: $sixth-color;
+      }
+      .red {
+        color: $seventh-color;
+      }
+    }
+    &.bid {
+      margin: 10px 0 -10px 33px;
+    }
+    &.waste-type {
+      margin-top: 25px;
+      color: $main-color;
+    }
+  }
+
+  .btn-main {
+    padding: 15px 55px;
+    text-transform: uppercase;
+  }
+  .list-items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      display: inline-block;
+      vertical-align: top;
+      width: 33.333%;
+      margin-top: 15px;
+    }
+  }
+}

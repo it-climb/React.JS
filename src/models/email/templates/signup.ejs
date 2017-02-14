@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <% include partials/head.ejs %>
+</head>
+<body>
+<table cellpadding="0" cellspacing="0" border="0" id="backgroundTable">
+    <tr>
+        <td valign="top">
+           <h3>Dear <%= model.Model.name === 'Client' %>
+               <%= model.Model.name === 'Bank' %> </h3>
+
+
+             <p>You have officially signed up for your free test account! At test we don't care who picks up our
+               trash as long as it is picked up on time :)</p>
+
+                <p>Now it is time to stop wasting $ and get the best price for your waste collection. Go to your [test
+                    Dashboard] to add your first service location.</p>
+
+                <p>Sincerely,</p>
+
+              <p>IT-Climb</p>
+
+                <p>11/11/2017</p>
+
+        </td>
+    </tr>
+</table>
+</body>
+</html>

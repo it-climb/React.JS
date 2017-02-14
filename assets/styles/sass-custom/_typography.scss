@@ -1,0 +1,24 @@
+body{
+  font-family:$font-open;
+  color: $fourth-color;
+}
+h1 {
+  font:100 64px/84px $font-open ;
+}
+h2{
+  font:300 48px/63px $font-open ;
+}
+
+h3{
+  font:300 36px/48px $font-open ;
+}
+h4{
+  font:700 19px/25px $font-open ;
+}
+
+p{
+  font:300 19px/30px $font-open ;
+}
+small{
+  font:400 10px/15px $font-open ;
+}
