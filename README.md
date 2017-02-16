@@ -28,40 +28,40 @@ open default by:
 
 and write down next and save changes in default file: 
 
-`server { 
-    listen 80;
-    server_name www.reacttest.local.com;
-    root /home/[ROOT NAME]/[PATH TO FILE]/dist/;
-    location /api { 
-        rewrite /api/(.*) /$1 break; 
-        client_max_body_size 100M; 
-        include proxy_params; 
-        proxy_redirect off; 
-        proxy_pass http://localhost:3000; 
-    } 
-    location /socket.io/ { 
-        proxy_pass http://localhost:3000; 
-        proxy_http_version 1.1; 
-        proxy_set_header Upgrade $http_upgrade; 
-        proxy_set_header Connection "upgrade"; 
-        proxy_read_timeout 950s; 
-    } 
-    location / { 
-        try_files $uri $uri/ /index.html; 
-    }
-} 
-## REST API server 
-server { 
-    listen 80; 
-    server_name www.reacttest.local.com; 
-    root /home/[ROOT NAME]/[PATH TO FILE]/dist/; 
-    location / { 
-        client_max_body_size 100M; 
-        include proxy_params; 
-        proxy_pass http://localhost:3000; 
-    } 
-}
-`
+	server { 
+    			listen 80;
+    			server_name www.reacttest.local.com;
+    			root /home/[ROOT NAME]/[PATH TO FILE]/dist/;
+    			location /api { 
+       			rewrite /api/(.*) /$1 break; 
+        		client_max_body_size 100M; 
+        		include proxy_params; 
+       	 		proxy_redirect off; 
+        		proxy_pass http://localhost:3000; 
+    		} 
+    		location /socket.io/ { 
+        		proxy_pass http://localhost:3000; 
+        		proxy_http_version 1.1; 
+        		proxy_set_header Upgrade $http_upgrade; 
+        		proxy_set_header Connection "upgrade"; 
+        		proxy_read_timeout 950s; 
+    		} 
+    		location / { 
+        		try_files $uri $uri/ /index.html; 
+    		}
+	} 
+	## REST API server 
+	server { 
+   		listen 80; 
+    		server_name www.reacttest.local.com; 
+    		root /home/[ROOT NAME]/[PATH TO FILE]/dist/; 
+    		location / { 
+       	 		client_max_body_size 100M; 
+        		include proxy_params; 
+        		proxy_pass http://localhost:3000; 
+    		} 
+	}
+
 2. in etc/ folder find hosts file
 
 open terminal in etc/ and enter 
