@@ -8,15 +8,15 @@ https://github.com/it-climb/cash-back/tree/dev
 
 #2) Install nginx
 
-1.	```sudo apt-get update```
-2.	```sudo apt-get install nginx```
-3.	```sudo service nginx start```
+	sudo apt-get update
+	sudo apt-get install nginx
+	sudo service nginx start
 
 ##2.1) Nginx settings
 
 open project cash-back and run terminal in this folder
 
-1. `pwd` 
+	pwd
 
 console will retern fullpath to project like this: `/home/[ROOT NAME]/[PATH TO PROJECT]`
 
@@ -24,7 +24,7 @@ goto root/etc folder ~etc/ -> /nginx/sites-available
 
 open default by:
 
-`sudo gedit default`
+	sudo gedit default
 
 and write down next and save changes in default file: 
 
@@ -66,19 +66,19 @@ and write down next and save changes in default file:
 
 open terminal in etc/ and enter 
 
-`sudo gedit hosts`
+	sudo gedit hosts
 
 add the string and save changes in hosts file:
 
-`127.0.0.1	www.reacttest.local.com`
+	127.0.0.1	www.reacttest.local.com
 
 ##2.2 Restart nginx
 
-`sudo service nginx restart`
+	sudo service nginx restart
 
 ##2.3 check if nginx is idle
 
-`sudo service nginx status`
+	sudo service nginx status
 
 #3) Install DataBases
 
@@ -89,18 +89,16 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgres
 	sudo apt-get install pgadmin3
 	sudo -u postgres psql
 
-type 1 `\password: 1`
+type 1 		\password: 1
 
 ##3.1 Create DB reactdb for project
 
 Type next settins (see details in video)
 
-`
-name:     localhost
-host:     localhost
-username: postgres
-password: 1
-`
+	name:     localhost
+	host:     localhost
+	username: postgres
+	password: 1
 
 #4) Install Nodejs, nvm, npm.
  
@@ -129,32 +127,30 @@ password: 1
     	
  Check current versions of Node and NPM
     
-    	`node -v
-    	npm -v`
+    	node -v
+    	npm -v
     
  Check installed versions of Node 
 
-    	`nvm ls`
+    	nvm ls
     
  Choose the any version of Node > 7.1.0
     
-        `nvm use default 7.5.0`
+        nvm use default 7.5.0
     
  Install express:
     
-         `sudo npm install -g express`
-    	
-    	
+         sudo npm install -g express
 
 #5) Installation process
 
-1. ```sudo npm install -g gulp jspm```
-2. ```npm install```
-3. ```jspm install```
+	sudo npm install -g gulp jspm
+	npm install
+	jspm install
 
 #4) Run project / re-deploy project
 
-1. ```gulp build:dev```
+	gulp build:dev
 
 #5) Run SQL scripts
 
