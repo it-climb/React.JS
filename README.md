@@ -28,7 +28,7 @@ open default by:
 
 and write down next and save changes in default file: 
 
-server { 
+`server { 
     listen 80;
     server_name www.reacttest.local.com;
     root /home/[ROOT NAME]/[PATH TO FILE]/dist/;
@@ -61,7 +61,7 @@ server {
         proxy_pass http://localhost:3000; 
     } 
 }
-
+`
 2. in etc/ folder find hosts file
 
 open terminal in etc/ and enter 
@@ -70,7 +70,7 @@ open terminal in etc/ and enter
 
 add the string and save changes in hosts file:
 
-127.0.0.1	www.reacttest.local.com
+`127.0.0.1	www.reacttest.local.com`
 
 ##2.2 Restart nginx
 
@@ -129,20 +129,20 @@ password: 1
     	
  Check current versions of Node and NPM
     
-    	node -v
-    	npm -v
+    	`node -v
+    	npm -v`
     
  Check installed versions of Node 
 
-    	nvm ls
+    	`nvm ls`
     
  Choose the any version of Node > 7.1.0
     
-      nvm use default 7.5.0
+        `nvm use default 7.5.0`
     
  Install express:
     
-    	sudo npm install -g express
+         `sudo npm install -g express`
     	
     	
 
