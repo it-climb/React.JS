@@ -24,11 +24,11 @@ goto root/etc folder ~etc/ -> /nginx/sites-available
 
 open default by:
 
-```sudo gedit default```
+`sudo gedit default`
 
 and write down next and save changes in default file: 
 
-```server { 
+server { 
     listen 80;
     server_name www.reacttest.local.com;
     root /home/[ROOT NAME]/[PATH TO FILE]/dist/;
@@ -61,12 +61,12 @@ server {
         proxy_pass http://localhost:3000; 
     } 
 }
-```
+
 2. in etc/ folder find hosts file
 
 open terminal in etc/ and enter 
 
-``` sudo gedit hosts```
+`sudo gedit hosts`
 
 add the string and save changes in hosts file:
 
@@ -74,11 +74,11 @@ add the string and save changes in hosts file:
 
 ##2.2 Restart nginx
 
-```sudo service nginx restart```
+`sudo service nginx restart`
 
 ##2.3 check if nginx is idle
 
-```sudo service nginx status```
+`sudo service nginx status`
 
 #3) Install DataBases
 
@@ -89,18 +89,18 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgres
 	sudo apt-get install pgadmin3
 	sudo -u postgres psql
 
-type 1 ```\password: 1```
+type 1 `\password: 1`
 
 ##3.1 Create DB reactdb for project
 
 Type next settins (see details in video)
 
-```
+`
 name:     localhost
 host:     localhost
 username: postgres
 password: 1
-```
+`
 
 #4) Install Nodejs, nvm, npm.
  
