@@ -184,6 +184,7 @@ export default function (services, reqOptions) {
     _.forEach(customActions, customAction => {
         switch (services[customAction].method) {
             case 'get':
+                // console.log("187 ");
                 CrudActions[customAction].listen(function (data, options, cb) {
 
                     let url = urlUtils.parseUrl(services[customAction].url, data),
@@ -197,6 +198,7 @@ export default function (services, reqOptions) {
                         .addOptionsUse(reqOptions)
                         .query(dataWrapper)
                         .end((err, res) => {
+                            // console.log("end 187 ");
                             if (err) {
                                 this.failed(err);
                             } else {

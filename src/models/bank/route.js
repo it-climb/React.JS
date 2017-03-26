@@ -51,6 +51,36 @@ module.exports = [
         }
     },
     {
+        method: 'GET',
+        path: `/${path}/businessNames`,
+        config: {
+            auth: false
+        },
+        handler: (request, reply)=> {
+            BankService.getAllBusinessNames()
+                .then(reply)
+                .catch(err=> {
+                    logger.warn(`Failed to load getAllBusinessNames for Bank`, err);
+                    reply(err);
+                })
+        }
+    },
+    {
+        method: 'GET',
+        path: `/${path}`,
+        config: {
+            auth: false
+        },
+        handler: (request, reply)=> {
+            BankService.getAll()
+                .then(reply)
+                .catch(err=> {
+                    logger.warn(`Failed to load getAllBusinessNames for Bank`, err);
+                    reply(err);
+                })
+        }
+    },
+    {
         method: 'PUT',
         path: `/${path}/{id}`,
         config: {

@@ -44,7 +44,9 @@ const CommonUtils = {
         const requiredFields = [
             {field: 'name', label: 'Business Name'}, {field: 'User.firstName', label: 'First Name'},
             {field: 'User.lastName', label: 'Last Name'}, {field: 'User.email', label: 'Email Address'},
-            {field: 'phone', label: 'Phone'}, {field: 'settings.jobTitle', label: 'Job Title'},
+            {field: 'phone', label: 'Phone'},
+            {field: 'mobilePhone', label: 'Mobile Phone'},
+            {field: 'settings.jobTitle', label: 'Job Title'},
             {field: 'location.line1', label: 'Street Address'}, {field: 'location.city', label: 'City'},
             {field: 'location.state', label: 'State'}, {field: 'location.postal_code', label: 'Postal Code'},
             {field: 'settings.npi', label: 'NPI'}, {field: 'settings.license', label: 'License #'},

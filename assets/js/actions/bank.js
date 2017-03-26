@@ -8,6 +8,7 @@ export default Promise.promisifyAll(RefluxActionsCrud(
         'update': {method: 'put', url: '/api/banks/:id'},
         'rate': {method: 'post', url: '/api/banks/:id/rate'},
         'updateBilling': {method: 'put', url: '/api/banks/:id/billing'},
-        'getBilling': {method: 'get', url: '/api/banks/:id/billing'}
+        'getBilling': {method: 'get', url: '/api/banks/:id/billing'},
+        'getAllBusinessNames': {method: 'get', url: '/api/banks/businessNames'}
     }
 ));

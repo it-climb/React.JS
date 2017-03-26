@@ -6,3 +6,39 @@
 2017-02-14T13:11:10.182Z - info: Server started at: http://localhost:3000
 2017-02-14T13:33:37.277Z - info: Server started at: http://localhost:3000
 2017-02-14T13:55:30.439Z - info: Server started at: http://localhost:3000
+2017-03-26T08:39:58.630Z - info: Server started at: http://localhost:3000
+2017-03-26T08:50:14.916Z - info: Server started at: http://localhost:3000
+2017-03-26T09:26:10.745Z - info: Server started at: http://localhost:3000
+2017-03-26T09:34:26.045Z - error: Failed to authenticate user [yurii] Error: User with email yurii not found
+    at Model.SessionService.authenticate.User.scope.findOne.then.user (/home/oem/IdeaProjects/cash-back/src/models/session/service.js:38:32)
+    at bound (domain.js:280:14)
+    at Model.runBound (domain.js:293:12)
+    at Model.tryCatcher (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:651:20)
+    at tryOnImmediate (timers.js:624:5)
+    at processImmediate [as _immediateCallback] (timers.js:596:5)
+2017-03-26T09:34:26.049Z - error: Authentication Failure Error: User with email yurii not found
+    at Model.SessionService.authenticate.User.scope.findOne.then.user (/home/oem/IdeaProjects/cash-back/src/models/session/service.js:38:32)
+    at bound (domain.js:280:14)
+    at Model.runBound (domain.js:293:12)
+    at Model.tryCatcher (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/home/oem/IdeaProjects/cash-back/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:651:20)
+    at tryOnImmediate (timers.js:624:5)
+    at processImmediate [as _immediateCallback] (timers.js:596:5)
+2017-03-26T10:12:06.409Z - info: Server started at: http://localhost:3000
+2017-03-26T10:12:29.667Z - info: Server started at: http://localhost:3000
+2017-03-26T10:13:02.053Z - info: Server started at: http://localhost:3000

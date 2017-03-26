@@ -11,10 +11,10 @@ module.exports = [
         method: 'GET',
         path: `/${path}/{id}`,
         config: {
-            auth: false,
-            /*plugins: {
-                joinTarget: 'Client'
-            }*/
+            auth: false
+            // plugins: {
+            //     joinTarget: 'Client'
+            // }
         },
         handler: (request, reply)=> {
             let {id}=request.params,

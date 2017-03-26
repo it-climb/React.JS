@@ -89,6 +89,39 @@ const BankService = {
             .spread(bank => bank.update(filtered));
 
     },
+    /**
+     * @param {String}data.businessName
+     * @param {sequelize.Association[]} data.include
+     * @return {Promise.<Instance.<Bank>,Error>}
+     */
+    getIdByBusinessName: data => {
+        console.log("bank servicejs getIdByBusinessName 98");
+        if (typeof data !== 'object') {
+            return Promise.reject(boom.badData(`Bank getIdByBusinessName: missing params object`));
+        }
+        if (!data.businessName || !validator.isString(data.businessName)) {
+            return Promise.reject(boom.badData(`Bank getIdByBusinessName: [${data.businessName}] is not a valid VARCHAR`));
+        }
+        let query = {where: {businessName: data.businessName}},
+            includes = data.include;
+
+        if (includes.length > 0) {
+            query.include = includes;
+        }
+        return model.find(query);
+    },
+
+    getAllBusinessNames: () => {
+        console.log("bank servicejs getAllBusinessNames 115");
+        return model.findAll({
+            attributes: ["business_name"]
+        });
+    },
+    getAll: () => {
+        console.log("bank servicejs getAll 121");
+        return model.findAll({
+        });
+    }
 };
 
 function validateRating(rating) {
