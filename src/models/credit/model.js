@@ -1,7 +1,7 @@
 'use strict';
 
 const
-    modelName = 'Bank';
+    modelName = 'Credit';
 
 module.exports = (/**Sequelize*/sequelize, DataTypes)=> {
 
@@ -13,63 +13,31 @@ module.exports = (/**Sequelize*/sequelize, DataTypes)=> {
                 type: DataTypes.UUID,
                 defaultValue: DataTypes.UUIDV4,
                 primaryKey: true
-            },
-            userId: {
-                field: 'user_id',
+            },client_id: {
+                field: 'client_id',
                 type: DataTypes.UUID,
                 allowNull: false,
                 unique: true
             },
-            businessName: {
-                field: 'business_name',
-                type: DataTypes.STRING(50),
+            sum: {
+                field: 'sum',
+                type: DataTypes.UUID,
                 allowNull: false,
-                defaultValue: ''
+                unique: true
             },
-            firstName: {
-                field: 'first_name',
-                type: DataTypes.STRING(50),
+            confirm: {
+                field: 'confirm',
+                type: DataTypes.UUID,
                 allowNull: false,
-                defaultValue: ''
+                unique: true
             },
-            lastName: {
-                field: 'last_name',
-                type: DataTypes.STRING(50),
+            request_data: {
+                field: 'request_data',
+                type: DataTypes.DATE,
                 allowNull: false,
-                defaultValue: ''
+                unique: true
             },
-            phone: DataTypes.STRING(20),
-            billingData: {
-                field: 'billing_data',
-                type: DataTypes.JSONB,
-                allowNull: false,
-                defaultValue: {}
-            },
-                mobilePhone: {
-                    field: 'mobile_phone',
-                    type:DataTypes.STRING(20),
 
-            },
-            location: {
-                type: DataTypes.JSONB,
-                allowNull: false,
-                defaultValue: {}
-            },
-            hasBilling:{
-                field:'has_billing',
-                type:DataTypes.BOOLEAN,
-                allowNull: false,
-                defaultValue: false
-            },
-            logoId: {
-                field: 'logo_id',
-                type: DataTypes.UUID
-            },
-            settings: {
-                type: DataTypes.JSONB,
-                allowNull: false,
-                defaultValue: {}
-            },
             createdAt: {
                 type: DataTypes.DATE,
                 field: 'created_at'
