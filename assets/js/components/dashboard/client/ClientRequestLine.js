@@ -1,16 +1,17 @@
 'use strict';
 import React from 'react';
-import {Row, Col, Form, FormGroup, FormControl, Button, Alert, ControlLabel, Navbar, Table} from "react-bootstrap";
+import {Row, Col, Form, FormGroup, FormControl, Button, Alert, ControlLabel, Navbar} from "react-bootstrap";
 import _ from "lodash";
 import  CreditAction from '../../../actions/credit';
 import  BankAction from '../../../actions/bank';
-// import  ClientRequestLine from './ClientRequestLine';
+
 
 class ClientRequestLine extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            clientId: this.props.currentUserId,
+            clientId: this.props.currentUser.Client.id,
             bankId: '',
             bankBusinessName: '',
             sumOfCredit: 0,
@@ -57,7 +58,7 @@ class ClientRequestLine extends React.Component {
         console.log("75 componentDidMount bankName:",that.state.bankBusinessName," bankId:",that.state.bankId," clientId:", that.state.clientId," sumOfCredit:", that.state.sumOfCredit-0);
         CreditAction.createAsync({'bankId':that.state.bankId, 'clientId':that.state.clientId, 'sum':that.state.sumOfCredit}, {})
             .then(()=>{
-                console.log('CreditAction.createAsync 61 Ok state', that.state.bankBusinessName);
+                console.log('61 Ok state', that.state.bankBusinessName);
             })
             .catch(err=>{
                 console.log('64 CreditAction create err', err);
@@ -66,7 +67,7 @@ class ClientRequestLine extends React.Component {
 
     render(){
         let that = this;
-        // console.log("106 render this.state.bankId:", this.state.bankId," this.state.bankBusinessName:",this.state.bankBusinessName);
+        console.log("106 render this.state.bankId:", this.state.bankId," this.state.bankBusinessName:",this.state.bankBusinessName);
         let num = -1;
         let banksNames = _.get(that.state, 'banksNames', []);
         return(
@@ -118,132 +119,12 @@ class ClientRequestLine extends React.Component {
         );
     }
 }
-
-class ClientCreditRequests extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            clientId: this.props.currentUserId,
-            clientRequests: [],
-            banksNames: [],
-            rend: false
-        };
-        this.handleCompleteRequestStates = this.handleCompleteRequestStates.bind(this);
-    }
-
-    componentWillMount(){
-        let that = this;
-        BankAction.getAllBusinessNamesAsync({}, {})
-            .then(banksNames => {
-             if(banksNames.length > 0) {
-                that.setState({
-                    banksNames: banksNames
-                });
-                 // console.log('141 banksNames:', banksNames);
-                 that.handleCompleteRequestStates();
-            }
-        })
-        .catch(err=>{
-            console.log('error componentWillMount 172 banksNames', err);
-        });
-        CreditAction.getByClientIdAsync({'id': that.state.clientId}, {})
-            .then(clientRequests => {
-                if(clientRequests.length > 0){
-                    that.setState({
-                        clientRequests: clientRequests
-                    });
-
-                }
-                // console.log("157 clientRequests:", clientRequests);
-                that.handleCompleteRequestStates();
-            })
-            .catch(err => {
-                console.log('ClientCreditRequests componentWillMount 169 err', err);
-            });
-    }
-    handleCompleteRequestStates(){
-        let that = this;
-        if(this.state.clientRequests.length > 0 && this.state.banksNames.length > 0 ){
-            let clientRequests = this.state.clientRequests;
-            let banksNames = this.state.banksNames;
-            let num = 0;
-            clientRequests.map((cr)=>{
-                let bankName = banksNames.filter((bn)=>{
-                    return cr.bankId === bn.id;
-                });
-                clientRequests[num].bankBusinessName = bankName[0].business_name;
-                num++;
-            });
-            that.setState({
-                clientRequests: clientRequests,
-                rend: true
-            });
-            // console.log("handleCompleteRequestStates", that.state.clientRequests);
-        }
-    }
-
-    render(){
-        let clientRequests = [];
-        if(this.state.rend){
-            clientRequests = this.state.clientRequests;
-        }
-        // console.log("194 clientRequests", clientRequests);
-        return (
-            <div className="test-dash-client">
-                <Table striped bordered condensed hover>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Bank</th>
-                            <th>Sum</th>
-                            <th>Confirm</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {
-                        clientRequests.map((el)=>{
-                           let confirm = (el.confirm == null) ? 'In process' : el.confirm;
-                            return(
-                            <tr>
-                               <td>{el.requestDate}</td>
-                               <td>{el.bankBusinessName}</td>
-                               <td>{el.sum}</td>
-                               <td>{(el.confirm == null) ? 'In process' : el.confirm}</td>
-                           </tr>);
-                        })
-                    }
-                    </tbody>
-                </Table>
-            </div>
-        );
-    }
-
-}
-
-class ClientDashboard extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            userId: this.props.currentUser.Client.id
-        }
-    }
-
-    render(){
-        return(
-            <div className = "test-dash-client"  >
-                <ClientRequestLine currentUserId = {this.state.userId}/>
-                <ClientCreditRequests currentUserId = {this.state.userId}/>
-            </div>
-        );
-    }
-}
-
-// ClientDashboard.defaultProps = {
+// ClientRequestLine.defaultProps = {
 //
 // };
 
 
-ClientDashboard.propTypes = {
+ClientRequestLine.propTypes = {
     //contains URI params
     params: React.PropTypes.object.isRequired,
     //contains all the stores
@@ -252,4 +133,4 @@ ClientDashboard.propTypes = {
     currentUser: React.PropTypes.object.isRequired
 };
 
-export default ClientDashboard;
+export default ClientRequestLine;

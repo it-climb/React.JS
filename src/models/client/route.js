@@ -29,6 +29,22 @@ module.exports = [
         }
     },
     {
+        method: 'GET',
+        path: `/${path}/all`,
+        config: {
+            auth: false
+            // auth: 'token'
+        },
+        handler: (request, reply)=> {
+            ClientService.getAllClients()
+                .then(reply)
+                .catch(err=> {
+                    logger.warn(`Failed to load credits All`, err);
+                    reply(err);
+                })
+        }
+    },
+    {
         method: 'PUT',
         path: `/${path}/{id}/billing`,
         config: {

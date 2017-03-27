@@ -31,6 +31,9 @@ const ClientService = {
         }
         return model.find(query);
     },
+    getAllClients: () => {
+        return model.findAll({});
+    },
     /**
      * @param {String|UUID}data.id
      * @param {String}data.stripeToken

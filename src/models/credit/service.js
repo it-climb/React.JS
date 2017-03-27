@@ -29,19 +29,34 @@ const CreditService = {
     //     };
     //     return model.find(query);
     // },
-    // getById: data => {
-    //     if (typeof data !== 'object') {
-    //         return Promise.reject(boom.badData(`Get Credit by ID: missing params object`));
-    //     }
-    //     if (!data.id || !validator.isUUID(data.id)) {
-    //         return Promise.reject(boom.badData(`Get Credit by ID: Image ID [${data.id}] is not a valid UUID`));
-    //     }
-    //     let query = {
-    //         where: {client_id: data.id},
-    //         include: data.include
-    //     };
-    //     return model.findAll(query);
-    // },
+    getByClientId: clientId => {
+        // if (typeof data !== 'object') {
+        //     return Promise.reject(boom.badData(`Get Credits by ClientID: missing params object`));
+        // }
+        if (!clientId || !validator.isUUID(clientId)) {
+            return Promise.reject(boom.badData(`Get Credits by ClientID: Image ID [${data.clientId}] is not a valid UUID`));
+        }
+        let query = {where: {clientId: clientId}};
+            // includes = data.include;
+        // if (includes.length > 0) {
+        //     query.include = includes;
+        // }
+        return model.findAll(query);
+    },
+    getByBankId: bankId => {
+        // if (typeof data !== 'object') {
+        //     return Promise.reject(boom.badData(`Get Credits by ClientID: missing params object`));
+        // }
+        if (!bankId || !validator.isUUID(bankId)) {
+            return Promise.reject(boom.badData(`Get Credits by bankId: Image ID [${data.bankId}] is not a valid UUID`));
+        }
+        let query = {where: {bankId: bankId}};
+            // includes = data.include;
+        // if (includes.length > 0) {
+        //     query.include = includes;
+        // }
+        return model.findAll(query);
+    },
     // setBidByClientId: data => {
     //     if (typeof data !== 'object') {
     //         return Promise.reject(boom.badData(`Get Credit by ID: missing params object`));
@@ -76,9 +91,9 @@ const CreditService = {
         return Credit.create({bankId: payload.bankId, clientId: payload.clientId, sum: payload.sum})
             .then(credit=>credit);
     },
-    getAll: () => {
-        return model.findAll({});
-    }
+    // getAll: () => {
+    //     return model.findAll({});
+    // }
 
 }
 

@@ -25,23 +25,42 @@ module.exports = [
                 })
         }
     },
-    // {
-    //     method: 'GET',
-    //     path: `/${path}/{id}`,
-    //     config: {
-    //         auth: false
-    //         // auth: 'token'
-    //     },
-    //     handler: (request, reply)=> {
-    //         let {id} = request.params;
-    //         CreditService.getById(id)
-    //             .then(reply)
-    //             .catch(err=> {
-    //                 logger.warn(`Failed to load billingData for Bank ${id}`, err);
-    //                 reply(err);
-    //             })
-    //     }
-    // },
+    {
+        method: 'GET',
+        path: `/${path}/{clientId}`,
+        config: {
+            auth: false
+            // auth: 'token'
+        },
+        handler: (request, reply)=> {
+            let {clientId} = request.params;
+            // let {include} = request;
+            CreditService.getByClientId(clientId)
+                .then(reply)
+                .catch(err=> {
+                    logger.warn(`Failed to load for client ${clientId}`, err);
+                    reply(err);
+                })
+        }
+    },
+    {
+        method: 'GET',
+        path: `/${path}/{bankId}/bank`,
+        config: {
+            auth: false
+            // auth: 'token'
+        },
+        handler: (request, reply)=> {
+            let {bankId} = request.params;
+            // let {include} = request;
+            CreditService.getByBankId(bankId)
+                .then(reply)
+                .catch(err=> {
+                    logger.warn(`Failed to load for bankId ${bankId}`, err);
+                    reply(err);
+                })
+        }
+    },
     // {
     //     method: 'GET',
     //     path: `/${path}/{clientId}/{bankId}`,
@@ -74,22 +93,22 @@ module.exports = [
                 })
         }
     },
-    {
-        method: 'GET',
-        path: `/${path}`,
-        config: {
-            auth: false
-            // auth: 'token'
-        },
-        handler: (request, reply)=> {
-            CreditService.getAll()
-                .then(reply)
-                .catch(err=> {
-                    logger.warn(`Failed to load credits All`, err);
-                    reply(err);
-                })
-        }
-    }
+    // {
+    //     method: 'GET',
+    //     path: `/${path}`,
+    //     config: {
+    //         auth: false
+    //         // auth: 'token'
+    //     },
+    //     handler: (request, reply)=> {
+    //         CreditService.getAll()
+    //             .then(reply)
+    //             .catch(err=> {
+    //                 logger.warn(`Failed to load credits All`, err);
+    //                 reply(err);
+    //             })
+    //     }
+    // }
 
     // {
     //     method: 'PUT',
