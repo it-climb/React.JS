@@ -69,7 +69,7 @@ module.exports = [
             CreditService.create(request.payload)
                 .then(reply)
                 .catch(err => {
-                    logger.warn('Failed to create credid', err);
+                    logger.warn('Failed to create credit', err);
                     reply(err);
                 })
         }

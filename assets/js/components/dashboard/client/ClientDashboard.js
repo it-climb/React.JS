@@ -4,6 +4,7 @@ import {Row, Col, Form, FormGroup, FormControl, Button, Alert, ControlLabel, Nav
 import _ from "lodash";
 import  CreditAction from '../../../actions/credit';
 import  BankAction from '../../../actions/bank';
+// import RoleUtils from '../../../utils/role_utils';
 
 
 class ClientDashboard extends React.Component {
@@ -11,51 +12,66 @@ class ClientDashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // bankId: props.bankId,
-            // bankBusinessName: props.bankBusinessName,
-            // clientId: props.clientId,
-            // sumOfCredit: props.sumOfCredit,
-            // banksNames: props.banksNames
+            clientId: this.props.currentUser.Client.id,
+            bankId: '',
+            bankBusinessName: '',
+            sumOfCredit: 0,
+            banksNames: []
+            // bankId: 'a17cc795-9fd7-46cf-b40b-66f51408f671',
+            // bankBusinessName: 'bank1',
         };
-        // console.log('banksNames',this.state.banksNames);
         this.handleChangeBank = this.handleChangeBank.bind(this);
         this.handleChangeSum = this.handleChangeSum.bind(this);
-
+        this.handleCreateCredit = this.handleCreateCredit.bind(this);
     }
-    componentDidMount(){
 
+    componentWillMount(){
         let that = this;
-        console.log("componentDidMount");
         BankAction.getAllBusinessNamesAsync({}, {})
-            .then(res=> {
-                console.log('getAllBusinessNamesAsync res', res);
+            .then(res => {
                 let banksNames = res;
-                that.setState({
-                    bankId: 'a17cc795-9fd7-46cf-b40b-66f51408f671',
-                    bankBusinessName: 'bank1',
-                    clientId: '2376a4a2-c6ec-44e0-ab24-4129df323c98',
-                    sumOfCredit: 0,
-                    banksNames: banksNames
-                });
+                if(banksNames && banksNames.length > 0) {
+                    that.setState({
+                        bankId: banksNames[0].id,
+                        bankBusinessName: banksNames[0].business_name,
+                        banksNames: banksNames
+                    });
+                }else{
+                    console.log("error componentWillMount 46 banksNames = null");
+                }
             })
             .catch(err=>{
-                console.log('err', err);
+                console.log('45 err', err);
             });
-
     }
+
     handleChangeBank(ev) {
-        let self = this;
-        this.setState({bankBusinessName: ev.target.value});
-        console.log("257", self.state.bankBusinessName);
+        let num = ev.target.value;
+        let bankObj = this.state.banksNames[num];
+        this.setState({
+            bankBusinessName: bankObj.business_name,
+            bankId: bankObj.id
+        });
     }
     handleChangeSum(ev) {
-        let self = this;
         this.setState({sumOfCredit: ev.target.value});
-        console.log("263", self.state.sumOfCredit);
     }
-    render(){
-        console.log("57");
+    handleCreateCredit(){
         let that = this;
+        console.log("75 componentDidMount bankName:",that.state.bankBusinessName," bankId:",that.state.bankId," clientId:", that.state.clientId," sumOfCredit:", that.state.sumOfCredit-0);
+        CreditAction.createAsync({'bankId':that.state.bankId, 'clientId':that.state.clientId, 'sum':that.state.sumOfCredit}, {})
+            .then(()=>{
+                console.log('61 Ok state', that.state.bankBusinessName);
+            })
+            .catch(err=>{
+                console.log('64 CreditAction create err', err);
+            });
+    }
+
+    render(){
+        let that = this;
+        console.log("106 render this.state.bankId:", this.state.bankId," this.state.bankBusinessName:",this.state.bankBusinessName);
+        let num = -1;
         let banksNames = _.get(that.state, 'banksNames', []);
         return(
             <div className = "test-dash-client"  >
@@ -66,18 +82,18 @@ class ClientDashboard extends React.Component {
                             <select onChange={this.handleChangeBank}>
                                 {
                                     banksNames.map(function(bankName){
+                                        num++;
                                         return (
                                             <option
-                                                key={bankName.business_name}
-                                                value={bankName.business_name}>
-                                                bankName.business_name
+                                                key={num}
+                                                value={num}>
+                                                {bankName.business_name}
                                             </option>
                                         );
+
                                     })
                                 }
-                                {/*<option key={1} value='1'>bank1</option>*/}
-                                {/*<option key={2} value='2'>bank2</option>*/}
-                            </select>
+                             </select>
                     </Col>
                     <Col md={4} xs={4} lg={4} sm={4} className="second-name">
                             <ControlLabel>Sum</ControlLabel>
@@ -100,7 +116,13 @@ class ClientDashboard extends React.Component {
                     {/*</Col>*/}
 
                     <Col md={4} xs={4} lg={4} sm={4} >
-                         <input type="submit" value="CreateCredit" className="login-submit-button btn btn-main btn-big"/>
+                         <input
+                             type="button"
+                             value="CreateCredit"
+                             className="login-submit-button btn btn-main btn-big"
+                             {/*className="login-submit-button btn btn-main btn-big"*/}
+                             onClick = {this.handleCreateCredit}
+                         />
                     </Col>
 
                 </Row>
@@ -109,9 +131,9 @@ class ClientDashboard extends React.Component {
         );
     }
 }
-ClientDashboard.defaultProps = {
-
-};
+// ClientDashboard.defaultProps = {
+//
+// };
 
 
 ClientDashboard.propTypes = {

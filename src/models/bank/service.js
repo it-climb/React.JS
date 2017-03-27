@@ -114,7 +114,7 @@ const BankService = {
     getAllBusinessNames: () => {
         console.log("bank servicejs getAllBusinessNames 115");
         return model.findAll({
-            attributes: ["business_name"]
+            attributes: ["id", "business_name"]
         });
     },
     getAll: () => {

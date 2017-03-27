@@ -4,8 +4,8 @@ import Promise from "bluebird";
 
 export default Promise.promisifyAll(RefluxActionsCrud(
     {
-        'getOne': '/api/clients/:id',
-        'createCredit':{method:'post',url:'/api/credits'}
+        // 'getOne': '/api/clients/:id',
+        'create':{method:'post', url:'/api/credits'}
         // 'update':{method:'put',url:'/api/clients/:id'},
         // 'updateBilling':{method:'put',url:'/api/clients/:id/billing'},
         // 'getBilling':{method:'get',url:'/api/clients/:id/billing'}
