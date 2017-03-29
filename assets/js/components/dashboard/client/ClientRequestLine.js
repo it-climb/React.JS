@@ -1,20 +1,18 @@
 'use strict';
 import React from 'react';
-import {Row, Col, Form, FormGroup, FormControl, Button, Alert, ControlLabel, Navbar} from "react-bootstrap";
+import {Row, Col, Form, FormGroup, FormControl, Button, Alert, ControlLabel, Navbar, Table} from "react-bootstrap";
 import _ from "lodash";
 import  CreditAction from '../../../actions/credit';
 import  BankAction from '../../../actions/bank';
 
-
 class ClientRequestLine extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
-            clientId: this.props.currentUser.Client.id,
+            clientId: this.props.currentUserId,
             bankId: '',
             bankBusinessName: '',
-            sumOfCredit: 0,
+            sumOfCredit: '',
             banksNames: []
         };
         this.handleChangeBank = this.handleChangeBank.bind(this);
@@ -55,10 +53,12 @@ class ClientRequestLine extends React.Component {
     }
     handleCreateCredit(){
         let that = this;
-        console.log("75 componentDidMount bankName:",that.state.bankBusinessName," bankId:",that.state.bankId," clientId:", that.state.clientId," sumOfCredit:", that.state.sumOfCredit-0);
         CreditAction.createAsync({'bankId':that.state.bankId, 'clientId':that.state.clientId, 'sum':that.state.sumOfCredit}, {})
             .then(()=>{
-                console.log('61 Ok state', that.state.bankBusinessName);
+                that.props.updateClientDashboard();
+                that.setState({
+                    sumOfCredit: ''
+                })
             })
             .catch(err=>{
                 console.log('64 CreditAction create err', err);
@@ -67,7 +67,7 @@ class ClientRequestLine extends React.Component {
 
     render(){
         let that = this;
-        console.log("106 render this.state.bankId:", this.state.bankId," this.state.bankBusinessName:",this.state.bankBusinessName);
+        // console.log("106 render this.state.bankId:", this.state.bankId," this.state.bankBusinessName:",this.state.bankBusinessName);
         let num = -1;
         let banksNames = _.get(that.state, 'banksNames', []);
         return(
@@ -119,6 +119,7 @@ class ClientRequestLine extends React.Component {
         );
     }
 }
+
 // ClientRequestLine.defaultProps = {
 //
 // };

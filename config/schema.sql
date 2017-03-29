@@ -137,6 +137,22 @@ CREATE TABLE attachments (
 
 CREATE UNIQUE INDEX attachments_id_uindex ON attachments USING btree (id);
 
+CREATE TABLE credits
+(
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY NOT NULL,
+    bank_id UUID NOT NULL,
+    client_id UUID NOT NULL,
+    sum INTEGER NOT NULL,
+    confirm BOOLEAN,
+    request_date TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
+    CONSTRAINT credits_bank_id_fk FOREIGN KEY (bank_id) REFERENCES banks (id),
+    CONSTRAINT credits_client_id_fk FOREIGN KEY (client_id) REFERENCES clients (id)
+);
+ALTER TABLE credits
+  ADD CONSTRAINT credits_bank_id_fk FOREIGN KEY (bank_id) REFERENCES banks (id) ON UPDATE NO ACTION ON DELETE CASCADE,
+  ADD CONSTRAINT credits_client_id_fk FOREIGN KEY (client_id) REFERENCES clients (id) ON UPDATE NO ACTION ON DELETE CASCADE;
+
+
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
 REVOKE ALL ON SCHEMA public FROM postgres;
 GRANT ALL ON SCHEMA public TO postgres;

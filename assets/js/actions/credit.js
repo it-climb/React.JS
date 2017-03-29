@@ -4,10 +4,11 @@ import Promise from "bluebird";
 
 export default Promise.promisifyAll(RefluxActionsCrud(
     {
-        // 'getOne': '/api/clients/:id',
+        // 'getOne': '/api/credits/:id',
         'create':{method:'post', url:'/api/credits'},
-        // 'update':{method:'put',url:'/api/clients/:id'},
-        // 'updateBilling':{method:'put',url:'/api/clients/:id/billing'},
+        'update':{method:'put',url:'/api/credits/:id'},
+        'updateConfirmById':{method:'put',url:'/api/credits/:id/confirm'},
+        'updateConfirm':{method:'put',url:'/api/credits/confirm'},
         'getByClientId':{method:'get',url:'/api/credits/:id'},
         'getByBankId':{method:'get',url:'/api/credits/:id/bank'}
     }

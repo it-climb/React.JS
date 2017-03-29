@@ -7,6 +7,7 @@ const
     config = require('./../../config/config'),
     /**@type {Object.<String,Model>}*/
     models = require('./../../models'),
+    Utils = require('./../../utils/utils'),
     /**@type {Model.<Image>}*/
     model = models['Credit'];
 
@@ -83,6 +84,47 @@ const CreditService = {
     //     };
     //     return model.update(status, where);
     // },
+    update: data => {
+        if (typeof data !== 'object' || typeof data.payload !== 'object') {
+            return Promise.reject(boom.badData(`Update Credit:missing payload object`));
+        }
+        if (!data.id || !validator.isUUID(data.id)) {
+            return Promise.reject(boom.badData(`Update Credit : id [${data.id}] is not a valid UUID`));
+        }
+        let filtered = Utils.filterPayload(data.payload, model, ['id',  'bankId', 'clientId',  'requestDate']);
+        // let filtered = {'confirm':data.payload.confirm};
+        return model.findById(data.id)
+            .then(/**Instance.<Credit>*/credit => {
+                if (!credit) {
+                    throw boom.notFound(`No Credit with ID [${data.id}] exists`);
+                }
+                return [credit, validate(filtered, credit.id)];
+            })
+            .spread(credit => credit.update(filtered));
+
+    },
+    updateConfirmById: data => {
+        if (!data || typeof data !== 'object') {
+            return Promise.reject(boom.badData('Missing payload data'));
+        }
+        let confirm = {confirm: data.payload.confirm};
+        let where = {
+            where: {id: data.id},
+        };
+        return model.update(confirm, where);
+
+    },
+
+    updateConfirm: data => {
+        if (!data || typeof data !== 'object') {
+            return Promise.reject(boom.badData('Missing payload data'));
+        }
+        let confirm = {confirm: data.confirm};
+        let where = {
+            where: {id: data.id},
+        };
+        return model.update(confirm, where);
+    },
     create: payload => {
         if (!payload || typeof payload !== 'object') {
             return Promise.reject(boom.badData('Missing payload data'));
