@@ -1,6 +1,6 @@
 'use strict';
 import React from 'react';
-import {Row, Col, Form, FormGroup, FormControl, Button, Alert, ControlLabel, Navbar, Table} from "react-bootstrap";
+import {Row, Col, Form, FormGroup, FormControl, Button, ControlLabel} from "react-bootstrap";
 import _ from "lodash";
 import  CreditAction from '../../../actions/credit';
 import  BankAction from '../../../actions/bank';
