@@ -54,7 +54,6 @@ CREATE TABLE clients (
   last_name      VARCHAR(50)                     NOT NULL DEFAULT '',
   business_name  VARCHAR(50)                     NOT NULL DEFAULT '',
   phone          VARCHAR(20),
-  mobile_phone          VARCHAR(20),
   location       JSONB                           NOT NULL DEFAULT '{}' :: JSONB,
   billing_data   JSONB                           NOT NULL DEFAULT '{}' :: JSONB,
   has_billing    BOOLEAN                         NOT NULL DEFAULT FALSE,
@@ -79,7 +78,6 @@ CREATE TABLE banks (
   last_name      VARCHAR(50)                     NOT NULL DEFAULT '',
   business_name  VARCHAR(50)                     NOT NULL DEFAULT '',
   phone          VARCHAR(20),
-  mobile_phone          VARCHAR(20),
   billing_data   JSONB                           NOT NULL DEFAULT '{}' :: JSONB,
   location       JSONB                           NOT NULL DEFAULT '{}' :: JSONB,
   has_billing    BOOLEAN                         NOT NULL DEFAULT FALSE,
@@ -136,20 +134,24 @@ CREATE TABLE attachments (
   created_at  TIMESTAMPTZ   NOT NULL DEFAULT now(),
   updated_at  TIMESTAMPTZ   NOT NULL DEFAULT now()
 );
+
 CREATE UNIQUE INDEX attachments_id_uindex ON attachments USING btree (id);
 
-CREATE TABLE credits (
-  id             UUID DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY ,
-  bank_id        UUID DEFAULT uuid_generate_v4() NOT NULL ,
-  client_id      UUID DEFAULT uuid_generate_v4() NOT NULL ,
-  sum            INTEGER,
-  confirm        BOOLEAN,
-  request_data   TIMESTAMP WITH TIME ZONE DEFAULT  now()
+CREATE TABLE credits
+(
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY NOT NULL,
+    bank_id UUID NOT NULL,
+    client_id UUID NOT NULL,
+    sum INTEGER NOT NULL,
+    confirm BOOLEAN,
+    request_date TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
+    CONSTRAINT credits_bank_id_fk FOREIGN KEY (bank_id) REFERENCES banks (id),
+    CONSTRAINT credits_client_id_fk FOREIGN KEY (client_id) REFERENCES clients (id)
 );
-
 ALTER TABLE credits
-    ADD CONSTRAINT credits_bank_id_fk FOREIGN KEY (bank_id) REFERENCES banks (id) ON UPDATE NO ACTION ON DELETE CASCADE ,
-  ADD CONSTRAINT credits_client_id_fk FOREIGN KEY (client_id) REFERENCES clients (id) ON UPDATE NO ACTION ON DELETE CASCADE ;
+  ADD CONSTRAINT credits_bank_id_fk FOREIGN KEY (bank_id) REFERENCES banks (id) ON UPDATE NO ACTION ON DELETE CASCADE,
+  ADD CONSTRAINT credits_client_id_fk FOREIGN KEY (client_id) REFERENCES clients (id) ON UPDATE NO ACTION ON DELETE CASCADE;
+
 
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
 REVOKE ALL ON SCHEMA public FROM postgres;
