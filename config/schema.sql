@@ -54,6 +54,7 @@ CREATE TABLE clients (
   last_name      VARCHAR(50)                     NOT NULL DEFAULT '',
   business_name  VARCHAR(50)                     NOT NULL DEFAULT '',
   phone          VARCHAR(20),
+  mobile         VARCHAR(20),
   location       JSONB                           NOT NULL DEFAULT '{}' :: JSONB,
   billing_data   JSONB                           NOT NULL DEFAULT '{}' :: JSONB,
   has_billing    BOOLEAN                         NOT NULL DEFAULT FALSE,

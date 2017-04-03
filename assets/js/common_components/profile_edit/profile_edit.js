@@ -85,6 +85,14 @@ export default React.createClass({
                             <FormControl.Feedback/>
                             {getValidationBlock('phone')}
                         </FormGroup>
+                        <FormGroup {...(_.get(errors, 'mobile') && validationError)}>
+                            <ControlLabel>Contact Phone</ControlLabel>
+                            <FormControl name="mobile" onChange={onChange}
+                                         placeholder="Mobile Phone"
+                                         value={_.get(entry,'mobile','')}/>
+                            <FormControl.Feedback/>
+                            {getValidationBlock('mobile')}
+                        </FormGroup>
                     </Col>
                     <Col md={4} xs={4} lg={4} sm={4}>
                         <h4>Update Password</h4>

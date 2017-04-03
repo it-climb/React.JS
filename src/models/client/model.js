@@ -36,6 +36,7 @@ module.exports = (/**Sequelize*/sequelize, DataTypes)=> {
             defaultValue: ''
         },
         phone: DataTypes.STRING(20),
+        mobile: DataTypes.STRING(20),
         billingData: {
             field: 'billing_data',
             type: DataTypes.JSONB,
