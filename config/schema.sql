@@ -43,7 +43,7 @@ ALTER TABLE roles OWNER TO postgres;
 
 CREATE UNIQUE INDEX roles_id_uindex ON roles USING btree (id);
 
-ALTER TABLE ONLY users
+ALTER TABLE   users
   ADD CONSTRAINT users_roles_id_fk FOREIGN KEY (role_id) REFERENCES roles(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 CREATE TABLE clients (
